@@ -4,10 +4,6 @@ import serial, time
 
 from optparse import OptionParser
 
-#def parse_file(filename):
-    #f = open(filename)
-    #for line in f:
-
 class Klugephrase:
 
     def connect(self, port):
@@ -125,8 +121,6 @@ def main():
     if options.verbose:
         print "Clearing memory."
     kp.clear()
-    if options.verbose:
-        print "adding category hello"
     for index, category in enumerate(data):
         if options.verbose:
             print "Adding category: %s" % category
