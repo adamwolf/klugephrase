@@ -1,0 +1,9 @@
+Klugephrase is a handheld word-guessing game that is easily updated through USB.  I designed, constructed, and programmed it after my wife and I bought Electronic Catchphrase and became familiar with all their words.
+
+You turn it on, and it shows a list of categories.  you pick a category, and it shows you a word from that category.  It ticks periodically, signifying a time limit.  You can go forward and back through words, and you can mark words as completed.  The buzzing gets faster, and the pace quickens.  *BUZZ*!  Your round is over.  Your completed word score is shown.
+
+It uses an Atmega168 for the core, and it is Arduino compatible. It can be reprogrammed and it has a telnet and Python front end for easily adding new words though USB.
+
+For more details, see http://feelslikeburning.com/klugephrase
+
+The computer/ directory is for the wordlist updating, and the device/ files are for the AVR.
