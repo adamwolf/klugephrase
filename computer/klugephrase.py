@@ -9,11 +9,12 @@ class Klugephrase:
     def connect(self, port):
         self.port = port
         self.connection = serial.Serial(port, 9600, timeout=3)
-        time.sleep(4)
+        time.sleep(8)
     
     def clear(self):
         command = "x\n"
         self.connection.write(command)
+        self.connection.flushOutput()
         time.sleep(.5)
 
     def add_category(self, title):
@@ -21,6 +22,7 @@ class Klugephrase:
             raise Exception
         command = "c%s\n" % title
         self.connection.write(command)
+        self.connection.flushOutput()
         time.sleep(.5)
 
     def add_word(self, category_index, word):
@@ -28,6 +30,7 @@ class Klugephrase:
             raise Exception
         command = "%d %s\n" % (category_index, word)
         self.connection.write(command)
+        self.connection.flushOutput()
         time.sleep(.5)
 
     def close(self):
@@ -112,6 +115,10 @@ def main():
     if options.verbose:
         print "Parsing complete."
     if options.parse_only:
+        for category in data:
+            print category
+            for word in data[category]:
+                print "\t", word
         return
 
     kp = Klugephrase()
@@ -121,6 +128,7 @@ def main():
     if options.verbose:
         print "Clearing memory."
     kp.clear()
+    print data
     for index, category in enumerate(data):
         if options.verbose:
             print "Adding category: %s" % category
